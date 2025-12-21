@@ -1,10 +1,14 @@
-import crypto from "crypto";
-
-export const createManifest = (fileName, chunks) => {
-  return {
-    fileName,
-    createdAt: new Date().toISOString(),
-    fileHash: crypto.createHash("sha256").update(fileName).digest("hex"),
-    chunks
+export const createManifest = (fileName, salt, chunks) => {
+    return {
+      fileName,
+      createdAt: new Date().toISOString(),
+      crypto: {
+        kdf: "PBKDF2",
+        hash: "SHA-256",
+        iterations: 100000
+      },
+      salt: salt.toString("hex"),
+      chunks
+    };
   };
-};
+  

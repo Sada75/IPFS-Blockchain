@@ -1,3 +1,4 @@
+import crypto from "crypto";
 import { chunkFile } from "../services/chunker.service.js";
 import { encryptChunk } from "../services/encryption.service.js";
 import { uploadToIPFS } from "../services/ipfs.service.js";
@@ -6,19 +7,30 @@ import { registerFileOnChain } from "../services/blockchain.service.js";
 
 export const uploadFile = async (req, res) => {
   try {
-    if (!req.file) {
-      return res.status(400).json({ error: "No file uploaded" });
+    const password = req.body.password;
+    const file = req.file;
+
+    if (!file || !password) {
+      return res.status(400).json({
+        error: "File and password are required"
+      });
     }
 
-    const fileBuffer = req.file.buffer;
-    const fileName = req.file.originalname;
+    const fileBuffer = file.buffer;
+    const fileName = file.originalname;
+
+    // 🔐 Generate salt ONCE per file
+    const salt = crypto.randomBytes(16);
 
     const chunks = chunkFile(fileBuffer);
-
     const manifestChunks = [];
 
     for (let i = 0; i < chunks.length; i++) {
-      const { encryptedData, iv, authTag } = encryptChunk(chunks[i]);
+      const { encryptedData, iv, authTag } = encryptChunk(
+        chunks[i],
+        password,
+        salt
+      );
 
       const cid = await uploadToIPFS(encryptedData);
 
@@ -30,7 +42,7 @@ export const uploadFile = async (req, res) => {
       });
     }
 
-    const manifest = createManifest(fileName, manifestChunks);
+    const manifest = createManifest(fileName, salt, manifestChunks);
     const manifestCID = await uploadToIPFS(
       Buffer.from(JSON.stringify(manifest))
     );
