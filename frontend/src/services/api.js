@@ -28,3 +28,9 @@ export async function retrieveFile(manifestCID, password) {
 
   return res.blob();
 }
+
+// 🔹 NEW: fetch uploaded files metadata
+export async function getFiles() {
+  const res = await fetch(`${BASE_URL}/files`);
+  return res.json();
+}

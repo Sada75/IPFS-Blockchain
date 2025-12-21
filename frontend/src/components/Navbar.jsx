@@ -6,6 +6,9 @@ export default function Navbar() {
       <Link to="/" style={{ color: "#fff", marginRight: "15px" }}>
         Upload
       </Link>
+      <Link to="/files" style={{ color: "#fff", marginRight: "15px" }}>
+        My Files
+      </Link>
       <Link to="/retrieve" style={{ color: "#fff" }}>
         Retrieve
       </Link>

@@ -1,8 +1,12 @@
 import { useState } from "react";
 import { retrieveFile } from "../services/api.js";
+import { useLocation } from "react-router-dom";
 
 export default function FileRetrieve() {
-  const [manifestCID, setManifestCID] = useState("");
+  const location = useLocation();
+  const [manifestCID, setManifestCID] = useState(
+    location.state?.manifestCID || ""
+  );
   const [password, setPassword] = useState("");
 
   const handleRetrieve = async () => {
