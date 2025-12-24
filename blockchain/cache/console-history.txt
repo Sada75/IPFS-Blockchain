@@ -1,0 +1,101 @@
+}
+  }
+    }
+      });
+        gasLimit: tx.gasLimit.toString()
+        to: tx.to,
+        from: tx.from,
+        hash: tx.hash,
+      console.log({
+      const tx = await ethers.provider.getTransaction(txHash);
+    for (const txHash of block.transactions) {
+    console.log(`\nBlock ${i}:`);
+  if (block.transactions.length > 0) {
+  const block = await ethers.provider.getBlock(i);
+for (let i = 0; i <= 2; i++) {
+  }
+    }
+      });
+        gasLimit: tx.gasLimit.toString()
+        to: tx.to,
+        from: tx.from,
+        hash: tx.hash,
+      console.log({
+      const tx = await ethers.provider.getTransaction(txHash);
+    for (const txHash of block.transactions) {
+    console.log(`\nBlock ${i}:`);
+  if (block.transactions.length > 0) {
+  const block = await ethers.provider.getBlock(i);
+for (let i = 0; i <= latestBlock1; i++) {
+latestblock1
+}
+  }
+    }
+      });
+        gasLimit: tx.gasLimit.toString()
+        to: tx.to,
+        from: tx.from,
+        hash: tx.hash,
+      console.log({
+      const tx = await ethers.provider.getTransaction(txHash);
+    for (const txHash of block.transactions) {
+    console.log(`\nBlock ${i}:`);
+  if (block.transactions.length > 0) {
+  const block = await ethers.provider.getBlock(i);
+for (let i = 0; i <= latestBlock1; i++) {
+}
+  }
+    }
+      });
+        gasLimit: tx.gasLimit.toString()
+        to: tx.to,
+        from: tx.from,
+        hash: tx.hash,
+      console.log({
+      const tx = await ethers.provider.getTransaction(txHash);
+    for (const txHash of block.transactions) {
+    console.log(`\nBlock ${i}:`);
+  if (block.transactions.length > 0) {
+  const block = await ethers.provider.getBlock(i);
+for (let i = 0; i <= latestBlock; i++) {
+latestblock1
+const latestblock1  = await ethers.provider.getBlockNumber();
+}
+  }
+    }
+      });
+        gasLimit: tx.gasLimit.toString()
+        to: tx.to,
+        from: tx.from,
+        hash: tx.hash,
+      console.log({
+      const tx = await ethers.provider.getTransaction(txHash);
+    for (const txHash of block.transactions) {
+    console.log(`\nBlock ${i}:`);
+  if (block.transactions.length > 0) {
+  const block = await ethers.provider.getBlock(i);
+for (let i = 0; i <= latestBlock; i++) {
+latestBlock
+const latestBlock = await ethers.provider.getBlockNumber();
+}
+  }
+    }
+      });
+        gasLimit: tx.gasLimit.toString()
+        to: tx.to,
+        from: tx.from,
+        hash: tx.hash,
+      console.log({
+      const tx = await ethers.provider.getTransaction(txHash);
+    for (const txHash of block.transactions) {
+    console.log(`\nBlock ${i}:`);
+  if (block.transactions.length > 0) {
+  const block = await ethers.provider.getBlock(i);
+for (let i = 0; i <= latestBlock; i++) {
+clear
+latestblock
+const latestblock  = await ethers.provider.getBlockNumber();
+clear
+const latestblock  = await ethers.provider.getBlockNumber();
+;
+const latestblock  = await ethers.provider.getBlockNumber()

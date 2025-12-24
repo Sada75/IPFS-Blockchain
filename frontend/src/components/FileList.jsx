@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
-import { getFiles } from "../services/api.js";
+import React, { useEffect, useState } from "react";
+import { getFiles } from "../services/api";
 import { useNavigate } from "react-router-dom";
 
 export default function FileList() {
@@ -7,49 +7,53 @@ export default function FileList() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    async function fetchFiles() {
-      const data = await getFiles();
-      setFiles(data);
-    }
-    fetchFiles();
+    getFiles().then(setFiles);
   }, []);
 
   if (files.length === 0) {
-    return <p>No files uploaded yet.</p>;
+    return <p className="text-gray-500">No files uploaded yet.</p>;
   }
 
   return (
-    <table border="1" cellPadding="10" style={{ marginTop: "15px" }}>
-      <thead>
-        <tr>
-          <th>File Name</th>
-          <th>Uploaded At</th>
-          <th>Manifest CID</th>
-          <th>Action</th>
-        </tr>
-      </thead>
-      <tbody>
-        {files.map(file => (
-          <tr key={file._id}>
-            <td>{file.fileName}</td>
-            <td>{new Date(file.uploadedAt).toLocaleString()}</td>
-            <td style={{ maxWidth: "200px", wordBreak: "break-all" }}>
-              {file.manifestCID}
-            </td>
-            <td>
-              <button
-                onClick={() =>
-                  navigate("/retrieve", {
-                    state: { manifestCID: file.manifestCID }
-                  })
-                }
-              >
-                Retrieve
-              </button>
-            </td>
+    <div className="overflow-x-auto">
+      <table className="min-w-full border rounded-md">
+        <thead className="bg-gray-100">
+          <tr>
+            <th className="text-left px-4 py-2">File</th>
+            <th className="text-left px-4 py-2">Uploaded</th>
+            <th className="text-left px-4 py-2">CID</th>
+            <th className="px-4 py-2">Action</th>
           </tr>
-        ))}
-      </tbody>
-    </table>
+        </thead>
+        <tbody>
+          {files.map((file) => (
+            <tr
+              key={file._id}
+              className="border-t hover:bg-gray-50"
+            >
+              <td className="px-4 py-2">{file.fileName}</td>
+              <td className="px-4 py-2 text-sm">
+                {new Date(file.uploadedAt).toLocaleString()}
+              </td>
+              <td className="px-4 py-2 text-xs break-all max-w-xs">
+                {file.manifestCID}
+              </td>
+              <td className="px-4 py-2 text-center">
+                <button
+                  onClick={() =>
+                    navigate("/retrieve", {
+                      state: { manifestCID: file.manifestCID }
+                    })
+                  }
+                  className="bg-indigo-600 text-white px-3 py-1 rounded-md hover:bg-indigo-700"
+                >
+                  Retrieve
+                </button>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
   );
 }
